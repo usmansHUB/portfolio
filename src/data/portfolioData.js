@@ -12,6 +12,7 @@ export const BACKEND_SKILLS = [
   { name: 'Node.js', color: '#339933', letter: 'N', icon: 'SiNodedotjs' },
   { name: 'Express', color: '#ffffff', letter: 'E', icon: 'SiExpress' },
   { name: 'MongoDB', color: '#47A248', letter: 'M', icon: 'SiMongodb' },
+  { name: 'SQL', color: '#00758F', letter: 'SQL', icon: 'DiMsqlServer' },
   { name: 'REST APIs', color: '#F97316', letter: 'API', icon: 'SiPostman' },
   { name: 'JWT', color: '#E11D48', letter: 'JWT', icon: 'SiJsonwebtokens' },
   { name: 'Mongoose', color: '#880000', letter: 'MG', icon: 'SiMongodb' },
