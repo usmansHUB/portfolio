@@ -18,8 +18,6 @@ portfolio-new/
 ├── index.html
 ├── package.json
 ├── vite.config.js
-├── netlify.toml
-└── vercel.json
 ```
 
 ## Setup

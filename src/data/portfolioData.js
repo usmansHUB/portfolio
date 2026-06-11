@@ -21,8 +21,6 @@ export const TOOLING_SKILLS = [
   { name: 'Git', color: '#F05032', letter: 'G', icon: 'SiGit' },
   { name: 'GitHub', color: '#FFFFFF', letter: 'GH', icon: 'SiGithub' },
   { name: 'Postman', color: '#FF6C37', letter: 'P', icon: 'SiPostman' },
-  { name: 'Netlify', color: '#00C7B7', letter: 'N', icon: 'SiNetlify' },
-  { name: 'Vercel', color: '#ffffff', letter: 'V', icon: 'SiVercel' },
   { name: 'Figma', color: '#F24E1E', letter: 'F', icon: 'SiFigma' },
 ];
 
@@ -49,7 +47,6 @@ export const portfolioData = {
         'A modern web application for a salon, featuring service booking, secure admin dashboard, and a fully responsive design.',
       modules: ['mongodb', 'express', 'react', 'nodejs'],
       image: '/projects/salon.png',
-      link: 'https://hairsaloon-lovat.vercel.app/',
       featured: true,
     },
     {
@@ -92,7 +89,7 @@ export const portfolioData = {
       skills: BACKEND_SKILLS,
     },
     {
-      title: 'Tools & Deployment',
+      title: 'Tools',
       skills: TOOLING_SKILLS,
     },
   ],
