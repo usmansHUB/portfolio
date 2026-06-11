@@ -9,13 +9,13 @@ const Logo = ({ className = 'h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10', ...props })
   >
     <defs>
       <linearGradient id="logo-u-gradient" x1="8" y1="8" x2="40" y2="40" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#6366f1" />
-        <stop offset="0.55" stopColor="#a78bfa" />
-        <stop offset="1" stopColor="#38bdf8" />
+        <stop stopColor="#fbbf24" />
+        <stop offset="0.55" stopColor="#f59e0b" />
+        <stop offset="1" stopColor="#facc15" />
       </linearGradient>
       <linearGradient id="logo-frame-gradient" x1="4" y1="4" x2="44" y2="44" gradientUnits="userSpaceOnUse">
-        <stop stopColor="#6366f1" stopOpacity="0.9" />
-        <stop offset="1" stopColor="#a78bfa" stopOpacity="0.5" />
+        <stop stopColor="#fbbf24" stopOpacity="0.95" />
+        <stop offset="1" stopColor="#f59e0b" stopOpacity="0.45" />
       </linearGradient>
     </defs>
     <path
@@ -32,7 +32,7 @@ const Logo = ({ className = 'h-8 w-8 sm:h-9 sm:w-9 md:h-10 md:w-10', ...props })
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-    <circle cx="24" cy="30" r="2" fill="#6366f1" />
+    <circle cx="24" cy="30" r="2" fill="#f59e0b" />
   </svg>
 );
 

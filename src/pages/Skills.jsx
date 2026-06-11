@@ -54,8 +54,8 @@ const Skills = () => {
                         className="panel group flex cursor-default flex-col items-center justify-center gap-3 p-5 transition-colors hover:border-accent/30 md:gap-4 md:p-6"
                       >
                         <div
-                          className={`flex h-14 w-14 items-center justify-center rounded-full border border-foreground/10 bg-muted/50 font-display transition-transform group-hover:scale-110 md:h-16 md:w-16 ${
-                            IconComponent ? 'text-2xl' : 'text-[0.78rem] font-semibold tracking-[0.18em] md:text-sm'
+                          className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-foreground/10 bg-muted/50 font-display text-center leading-none transition-transform group-hover:scale-110 md:h-16 md:w-16 ${
+                            IconComponent ? 'text-2xl' : 'px-1 text-[0.62rem] font-semibold tracking-[0.16em] md:text-[0.72rem]'
                           }`}
                           style={{ color: skill.color }}
                         >
