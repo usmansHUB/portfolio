@@ -42,11 +42,12 @@ export const portfolioData = {
   projects: [
     {
       id: 'salon',
-      title: 'Salon Web App',
+      title: 'Luxe Hair Saloon Web App',
       description:
         'A modern web application for a salon, featuring service booking, secure admin dashboard, and a fully responsive design.',
       modules: ['mongodb', 'express', 'react', 'nodejs'],
       image: '/projects/salon.png',
+      link: 'https://hairsaloon-lovat.vercel.app/',
       featured: true,
     },
     {
