@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Smartphone, Database, Quote, FileText, Link2, Mail } from 'lucide-react';
+import { ArrowRight, Globe, Smartphone, Database, Quote } from 'lucide-react';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import { portfolioData } from '../data/portfolioData';
 import PageTransition from '../components/PageTransition';
 
@@ -122,9 +123,9 @@ const Home = () => {
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">(01) Connect</div>
             <div className="flex gap-3">
-              <SocialLink href={profile.socials.github} label="GitHub" icon={<Link2 className="h-5 w-5" strokeWidth={1.5} />} />
-              <SocialLink href={profile.socials.linkedin} label="LinkedIn" icon={<Mail className="h-5 w-5" strokeWidth={1.5} />} />
-              <SocialLink href={profile.cvUrl} label="CV" download icon={<FileText className="h-5 w-5" strokeWidth={1.5} />} />
+              <SocialLink href={profile.socials.github} label="GitHub" icon={<FaGithub className="h-5 w-5" />} />
+              <SocialLink href={profile.socials.linkedin} label="LinkedIn" icon={<FaLinkedin className="h-5 w-5" />} />
+              <SocialLink href={`mailto:${profile.email}`} label="Email" icon={<FaEnvelope className="h-5 w-5" />} />
             </div>
           </div>
         </motion.section>

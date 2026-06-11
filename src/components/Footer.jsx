@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Logo from './Logo';
 import { portfolioData } from '../data/portfolioData';
 
@@ -22,14 +23,17 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center space-y-5 md:items-end">
-          <div className="flex flex-wrap justify-center gap-6 text-sm font-bold uppercase tracking-widest md:justify-end">
-            <a href={socials.github} target="_blank" rel="noreferrer" className="transition-colors hover:text-accent">
-              Github
+          <div className="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-widest md:justify-end">
+            <a href={socials.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
+              <FaGithub className="h-4 w-4" />
+              GitHub
             </a>
-            <a href={socials.linkedin} target="_blank" rel="noreferrer" className="transition-colors hover:text-accent">
-              Linkedin
+            <a href={socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
+              <FaLinkedin className="h-4 w-4" />
+              LinkedIn
             </a>
-            <a href={`mailto:${email}`} className="transition-colors hover:text-accent">
+            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
+              <FaEnvelope className="h-4 w-4" />
               Email
             </a>
           </div>
