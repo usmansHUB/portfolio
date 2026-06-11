@@ -9,6 +9,17 @@ const Skills = () => {
 
   const getIconComponent = (iconName) => SiIcons[iconName] || DiIcons[iconName];
 
+  const getSkillBadgeText = (skill) => {
+    if (skill.letter?.trim()) return skill.letter.trim().toUpperCase();
+
+    return skill.name
+      .split(/\s+/)
+      .map((word) => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 3);
+  };
+
   return (
     <PageTransition>
       <div className="relative overflow-hidden px-6 pb-24 pt-24 md:px-12 md:pt-28">
@@ -43,13 +54,15 @@ const Skills = () => {
                         className="panel group flex cursor-default flex-col items-center justify-center gap-3 p-5 transition-colors hover:border-accent/30 md:gap-4 md:p-6"
                       >
                         <div
-                          className="flex h-14 w-14 items-center justify-center rounded-full border border-foreground/10 bg-muted/50 font-display text-2xl transition-transform group-hover:scale-110 md:h-16 md:w-16"
+                          className={`flex h-14 w-14 items-center justify-center rounded-full border border-foreground/10 bg-muted/50 font-display transition-transform group-hover:scale-110 md:h-16 md:w-16 ${
+                            IconComponent ? 'text-2xl' : 'text-[0.78rem] font-semibold tracking-[0.18em] md:text-sm'
+                          }`}
                           style={{ color: skill.color }}
                         >
                           {IconComponent ? (
                             <IconComponent size={24} />
                           ) : (
-                            skill.letter ?? skill.name.charAt(0)
+                            getSkillBadgeText(skill)
                           )}
                         </div>
                         <span className="text-center text-sm font-semibold uppercase tracking-wider md:text-base">

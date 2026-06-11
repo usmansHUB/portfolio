@@ -4,7 +4,7 @@ export const FRONTEND_SKILLS = [
   { name: 'Next.js', color: '#ffffff', letter: 'N', icon: 'SiNextdotjs' },
   { name: 'Tailwind CSS', color: '#38BDF8', letter: 'TW', icon: 'SiTailwindcss' },
   { name: 'HTML5', color: '#E34F26', letter: 'H5', icon: 'SiHtml5' },
-  { name: 'CSS3', color: '#1572B6', letter: 'C3', icon: 'SiCss3' },
+  { name: 'CSS3', color: '#1572B6', letter: 'C3', icon: 'SiCss' },
   { name: 'Vite', color: '#646CFF', letter: 'V', icon: 'SiVite' },
 ];
 

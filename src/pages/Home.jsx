@@ -35,15 +35,15 @@ const Home = () => {
 
   const containerStagger = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.08, delayChildren: 0.2 } },
+    show: { transition: { staggerChildren: 0.18, delayChildren: 0.45 } },
   };
   const lineReveal = {
     hidden: { y: '110%' },
-    show: { y: '0%', transition: { duration: 1.1, ease: [0.76, 0, 0.24, 1] } },
+    show: { y: '0%', transition: { duration: 1.8, ease: [0.76, 0, 0.24, 1] } },
   };
   const fadeUp = {
     hidden: { opacity: 0, y: 16 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: 'easeOut' } },
+    show: { opacity: 1, y: 0, transition: { duration: 1.3, ease: 'easeOut' } },
   };
 
   return (
@@ -116,7 +116,7 @@ const Home = () => {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.1 }}
+          transition={{ duration: 1.4, delay: 1.8 }}
           className="relative mt-12 border-t border-foreground/10 px-6 py-10 md:px-12"
         >
           <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
