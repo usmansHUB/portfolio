@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, Smartphone, Database, Quote } from 'lucide-react';
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import * as SiIcons from 'react-icons/si';
+import * as DiIcons from 'react-icons/di';
 import { portfolioData } from '../data/portfolioData';
 import PageTransition from '../components/PageTransition';
 
@@ -29,6 +31,8 @@ const SocialLink = ({ href, label, icon, download }) => {
     </a>
   );
 };
+
+const getIconComponent = (iconName) => SiIcons[iconName] || DiIcons[iconName];
 
 const Home = () => {
   const { profile, roles, skillCategories } = portfolioData;
@@ -150,18 +154,24 @@ const Home = () => {
         <section className="border-t border-foreground/10 py-12">
           <div className="relative overflow-hidden border-y border-foreground/10 py-5">
             <div className="marquee-track flex w-max items-center gap-6 whitespace-nowrap">
-              {[...allSkills, ...allSkills, ...allSkills].map((skill, i) => (
-                <span
-                  key={`${skill.name}-${i}`}
-                  className="flex items-center gap-6 rounded-full border border-foreground/10 px-6 py-3 text-sm font-semibold uppercase tracking-wider md:px-8 md:py-4 md:text-base"
-                  style={{ color: i % 2 === 0 ? undefined : skill.color }}
-                >
-                  {skill.name}
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="h-4 w-4 shrink-0 text-accent" fill="currentColor">
-                    <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" />
-                  </svg>
-                </span>
-              ))}
+              {[...allSkills, ...allSkills, ...allSkills].map((skill, i) => {
+                const IconComponent = getIconComponent(skill.icon);
+
+                return (
+                  <span
+                    key={`${skill.name}-${i}`}
+                    className="flex items-center gap-4 rounded-full border border-foreground/10 bg-background/70 px-6 py-3 text-sm font-semibold uppercase tracking-wider shadow-sm md:px-8 md:py-4 md:text-base"
+                  >
+                    <span
+                      className="flex h-8 w-8 items-center justify-center rounded-full border border-foreground/10 bg-muted/60 md:h-9 md:w-9"
+                      style={{ color: skill.color }}
+                    >
+                      {IconComponent ? <IconComponent size={16} /> : <span className="text-[10px] font-bold">{skill.letter ?? skill.name[0]}</span>}
+                    </span>
+                    {skill.name}
+                  </span>
+                );
+              })}
             </div>
           </div>
         </section>
