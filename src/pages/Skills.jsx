@@ -51,10 +51,19 @@ const Skills = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.05 }}
+                        whileHover={{
+                          y: -6,
+                          scale: 1.03,
+                          rotate: -1,
+                          boxShadow: '0 18px 40px rgba(255, 215, 0, 0.12)',
+                          borderColor: 'rgba(255, 215, 0, 0.35)',
+                        }}
                         className="panel group flex cursor-default flex-col items-center justify-center gap-3 p-5 transition-colors hover:border-accent/30 md:gap-4 md:p-6"
                       >
-                        <div
-                          className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-foreground/10 bg-muted/50 font-display text-center leading-none transition-transform group-hover:scale-110 md:h-16 md:w-16 ${
+                        <motion.div
+                          whileHover={{ scale: 1.18, rotate: 6 }}
+                          transition={{ type: 'spring', stiffness: 260, damping: 16 }}
+                          className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-foreground/10 bg-muted/50 font-display text-center leading-none shadow-sm transition-shadow group-hover:shadow-[0_0_0_4px_rgba(255,215,0,0.08)] md:h-16 md:w-16 ${
                             IconComponent ? 'text-2xl' : 'px-1 text-[0.62rem] font-semibold tracking-[0.16em] md:text-[0.72rem]'
                           }`}
                           style={{ color: skill.color }}
@@ -64,7 +73,7 @@ const Skills = () => {
                           ) : (
                             getSkillBadgeText(skill)
                           )}
-                        </div>
+                        </motion.div>
                         <span className="text-center text-sm font-semibold uppercase tracking-wider md:text-base">
                           {skill.name}
                         </span>
