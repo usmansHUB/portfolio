@@ -42,6 +42,16 @@ export const portfolioData = {
   },
   projects: [
     {
+      id: 'hrm',
+      title: 'Vercel HR Management App',
+      description:
+        'A comprehensive HR management platform featuring payroll calculations, attendance tracking with clock heatmaps, applicant tracking system, and performance evaluations on a unified dashboard.',
+      modules: ['mongodb', 'express', 'VueJS', 'nodejs'],
+      image: '/projects/hrm.png',
+      link: 'https://hr-managementapp.vercel.app/',
+      featured: true,
+    },
+    {
       id: 'salon',
       title: 'Luxe Hair Saloon Web App',
       description:
