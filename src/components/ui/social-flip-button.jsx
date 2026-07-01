@@ -1,5 +1,5 @@
 "use client";;
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useMotionValue, useTransform, animate } from "framer-motion";
 import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -30,17 +30,11 @@ const SocialFlipNode = ({
     tooltipIndex,
     itemClassName,
     frontClassName,
-    backClassName,
-    onNodeClick
+    backClassName
 }) => {
     const Wrapper = item.href ? "a" : "div";
     const wrapperProps = item.href
-        ? { 
-            href: item.href, 
-            target: "_blank", 
-            rel: "noopener noreferrer",
-            onClick: (e) => onNodeClick(e, index)
-          }
+        ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
         : { onClick: item.onClick };
 
     return (
@@ -115,13 +109,35 @@ export function SocialFlipButton({
 }) {
     const [isHovered, setIsHovered] = useState(false);
     const [tooltipIndex, setTooltipIndex] = useState(null);
+    const [isTouch, setIsTouch] = useState(false);
+    const [isRevealed, setIsRevealed] = useState(false);
     const containerRef = React.useRef(null);
+
+    // Framer motion drag tracking values
+    const x = useMotionValue(0);
+    const textOpacity = useTransform(x, [0, 160], [1, 0]);
+
+    React.useEffect(() => {
+        const checkTouch = () => {
+            setIsTouch(!window.matchMedia("(hover: hover)").matches);
+        };
+        checkTouch();
+        window.addEventListener("resize", checkTouch);
+        return () => window.removeEventListener("resize", checkTouch);
+    }, []);
 
     React.useEffect(() => {
         const handleClickOutside = (e) => {
-            if (isHovered && containerRef.current && !containerRef.current.contains(e.target)) {
-                setIsHovered(false);
-                setTooltipIndex(null);
+            if (isTouch) {
+                if (isRevealed && containerRef.current && !containerRef.current.contains(e.target)) {
+                    setIsRevealed(false);
+                    setTooltipIndex(null);
+                }
+            } else {
+                if (isHovered && containerRef.current && !containerRef.current.contains(e.target)) {
+                    setIsHovered(false);
+                    setTooltipIndex(null);
+                }
             }
         };
         document.addEventListener("mousedown", handleClickOutside);
@@ -130,18 +146,26 @@ export function SocialFlipButton({
             document.removeEventListener("mousedown", handleClickOutside);
             document.removeEventListener("touchstart", handleClickOutside);
         };
-    }, [isHovered]);
+    }, [isHovered, isRevealed, isTouch]);
 
     const handleNodeClick = (e, index) => {
-        const supportsHover = window.matchMedia("(hover: hover)").matches;
-        if (!supportsHover) {
-            if (!isHovered) {
-                e.preventDefault();
-                setIsHovered(true);
-                setTooltipIndex(index);
-            } else if (tooltipIndex !== index) {
+        if (isTouch) {
+            // Intercept first tap to display tooltip
+            if (tooltipIndex !== index) {
                 e.preventDefault();
                 setTooltipIndex(index);
+            }
+        } else {
+            const supportsHover = window.matchMedia("(hover: hover)").matches;
+            if (!supportsHover) {
+                if (!isHovered) {
+                    e.preventDefault();
+                    setIsHovered(true);
+                    setTooltipIndex(index);
+                } else if (tooltipIndex !== index) {
+                    e.preventDefault();
+                    setTooltipIndex(index);
+                }
             }
         }
     };
@@ -189,15 +213,65 @@ export function SocialFlipButton({
         displayItems = defaultItems;
     }
 
+    // Slide-to-reveal mobile gesture container
+    if (isTouch && !isRevealed) {
+        return (
+            <div className={cn("flex items-center justify-center w-full", className)}>
+                <div 
+                    ref={containerRef}
+                    className="relative h-14 w-[280px] rounded-full bg-zinc-950/60 border border-white/10 flex items-center p-1 shadow-2xl backdrop-blur-md overflow-hidden select-none"
+                >
+                    {/* Subtle gradient background shimmer */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent pointer-events-none" />
+                    
+                    {/* Slide guide label */}
+                    <motion.span 
+                        style={{ opacity: textOpacity }}
+                        className="absolute inset-y-0 left-12 right-4 flex items-center justify-center text-[10px] font-bold tracking-[0.2em] text-zinc-400 text-center uppercase pointer-events-none"
+                    >
+                        Slide to Contact
+                    </motion.span>
+                    
+                    {/* Interactive slider knob */}
+                    <motion.div
+                        drag="x"
+                        dragConstraints={{ left: 0, right: 224 }}
+                        dragElastic={0.05}
+                        dragMomentum={false}
+                        style={{ x }}
+                        onDragEnd={() => {
+                            if (x.get() > 190) {
+                                setIsRevealed(true);
+                                x.set(0); // reset position
+                            } else {
+                                animate(x, 0, { type: "spring", stiffness: 300, damping: 20 });
+                            }
+                        }}
+                        className="h-11 w-11 rounded-full bg-accent flex items-center justify-center text-black font-semibold text-lg cursor-grab active:cursor-grabbing shadow-lg"
+                    >
+                        <motion.span
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+                        >
+                            →
+                        </motion.span>
+                    </motion.div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className={cn("flex items-center justify-center gap-4", className)}>
             <div
                 ref={containerRef}
                 className="group relative flex items-center justify-center gap-2 rounded-2xl glass-border bg-black/40 p-3 shadow-2xl backdrop-blur-md"
-                onMouseEnter={() => setIsHovered(true)}
+                onMouseEnter={() => !isTouch && setIsHovered(true)}
                 onMouseLeave={() => {
-                    setIsHovered(false);
-                    setTooltipIndex(null);
+                    if (!isTouch) {
+                        setIsHovered(false);
+                        setTooltipIndex(null);
+                    }
                 }}>
                 {/* Border Lines Container - Clipped */}
                 <div
@@ -228,7 +302,7 @@ export function SocialFlipButton({
                         key={index}
                         item={item}
                         index={index}
-                        isHovered={isHovered}
+                        isHovered={isTouch ? isRevealed : isHovered}
                         setTooltipIndex={setTooltipIndex}
                         tooltipIndex={tooltipIndex}
                         itemClassName={itemClassName}
