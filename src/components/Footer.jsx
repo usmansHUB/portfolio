@@ -10,12 +10,12 @@ const Footer = () => {
 
   const contactItems = [
     { letter: "C", icon: <FaGithub />, label: "GitHub", href: socials.github },
-    { letter: "O", icon: <FaTwitter />, label: "Twitter", href: "https://twitter.com" },
+    { letter: "O", icon: <FaTwitter />, label: "Twitter", href: socials.twitter },
     { letter: "N", icon: <FaLinkedin />, label: "LinkedIn", href: socials.linkedin },
-    { letter: "T", icon: <FaInstagram />, label: "Instagram", href: "https://instagram.com" },
-    { letter: "A", icon: <FaFacebook />, label: "Facebook", href: "https://facebook.com" },
+    { letter: "T", icon: <FaInstagram />, label: "Instagram", href: socials.instagram },
+    { letter: "A", icon: <FaFacebook />, label: "Facebook", href: socials.facebook },
     { letter: "C", icon: <FaEnvelope />, label: "Email", href: `mailto:${email}` },
-    { letter: "T", icon: <FaDiscord />, label: "Discord", href: "https://discord.com" },
+    { letter: "T", icon: <FaDiscord />, label: "Discord", href: socials.discord },
   ];
 
   return (

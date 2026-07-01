@@ -37,6 +37,10 @@ export const portfolioData = {
     socials: {
       github: 'https://github.com/usmansHUB',
       linkedin: 'https://www.linkedin.com/in/usmansafdar2025',
+      twitter: 'https://x.com/oiiUsman',
+      instagram: 'https://www.instagram.com/oiiusmann',
+      facebook: 'https://www.facebook.com/usman.safdar.14289',
+      discord: 'https://discord.com/oiiUsman',
     },
     formspreeEndpoint: 'https://formspree.io/f/xgoqzgza',
   },
