@@ -30,11 +30,17 @@ const SocialFlipNode = ({
     tooltipIndex,
     itemClassName,
     frontClassName,
-    backClassName
+    backClassName,
+    onNodeClick
 }) => {
     const Wrapper = item.href ? "a" : "div";
     const wrapperProps = item.href
-        ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
+        ? { 
+            href: item.href, 
+            target: "_blank", 
+            rel: "noopener noreferrer",
+            onClick: (e) => onNodeClick(e, index)
+          }
         : { onClick: item.onClick };
 
     return (
@@ -109,6 +115,36 @@ export function SocialFlipButton({
 }) {
     const [isHovered, setIsHovered] = useState(false);
     const [tooltipIndex, setTooltipIndex] = useState(null);
+    const containerRef = React.useRef(null);
+
+    React.useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (isHovered && containerRef.current && !containerRef.current.contains(e.target)) {
+                setIsHovered(false);
+                setTooltipIndex(null);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("touchstart", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("touchstart", handleClickOutside);
+        };
+    }, [isHovered]);
+
+    const handleNodeClick = (e, index) => {
+        const supportsHover = window.matchMedia("(hover: hover)").matches;
+        if (!supportsHover) {
+            if (!isHovered) {
+                e.preventDefault();
+                setIsHovered(true);
+                setTooltipIndex(index);
+            } else if (tooltipIndex !== index) {
+                e.preventDefault();
+                setTooltipIndex(index);
+            }
+        }
+    };
 
     let displayItems = items;
     if (platform && href) {
@@ -156,6 +192,7 @@ export function SocialFlipButton({
     return (
         <div className={cn("flex items-center justify-center gap-4", className)}>
             <div
+                ref={containerRef}
                 className="group relative flex items-center justify-center gap-2 rounded-2xl glass-border bg-black/40 p-3 shadow-2xl backdrop-blur-md"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => {
@@ -196,7 +233,8 @@ export function SocialFlipButton({
                         tooltipIndex={tooltipIndex}
                         itemClassName={itemClassName}
                         frontClassName={frontClassName}
-                        backClassName={backClassName} />
+                        backClassName={backClassName}
+                        onNodeClick={handleNodeClick} />
                 ))}
             </div>
         </div>
