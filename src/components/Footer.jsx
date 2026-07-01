@@ -4,19 +4,20 @@ import Logo from './Logo';
 import { portfolioData } from '../data/portfolioData';
 import { SocialFlipButton } from '@/components/ui/social-flip-button';
 
-const Footer = () => {
-  const { socials, email } = portfolioData.profile;
-  const year = new Date().getFullYear();
+const { socials, email } = portfolioData.profile;
 
-  const contactItems = [
-    { letter: "C", icon: <FaGithub />, label: "GitHub", href: socials.github },
-    { letter: "O", icon: <FaTwitter />, label: "Twitter", href: socials.twitter },
-    { letter: "N", icon: <FaLinkedin />, label: "LinkedIn", href: socials.linkedin },
-    { letter: "T", icon: <FaInstagram />, label: "Instagram", href: socials.instagram },
-    { letter: "A", icon: <FaFacebook />, label: "Facebook", href: socials.facebook },
-    { letter: "C", icon: <FaEnvelope />, label: "Email", href: `mailto:${email}` },
-    { letter: "T", icon: <FaDiscord />, label: "Discord", href: socials.discord },
-  ];
+const contactItems = [
+  { letter: "C", icon: <FaGithub />, label: "GitHub", href: socials.github },
+  { letter: "O", icon: <FaTwitter />, label: "Twitter", href: socials.twitter },
+  { letter: "N", icon: <FaLinkedin />, label: "LinkedIn", href: socials.linkedin },
+  { letter: "T", icon: <FaInstagram />, label: "Instagram", href: socials.instagram },
+  { letter: "A", icon: <FaFacebook />, label: "Facebook", href: socials.facebook },
+  { letter: "C", icon: <FaEnvelope />, label: "Email", href: `mailto:${email}` },
+  { letter: "T", icon: <FaDiscord />, label: "Discord", href: socials.discord },
+];
+
+const Footer = () => {
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative border-t border-foreground/10 px-6 py-16 md:px-12 md:py-20">

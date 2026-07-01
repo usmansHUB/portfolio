@@ -109,17 +109,6 @@ export function SocialFlipButton({
 }) {
     const [isHovered, setIsHovered] = useState(false);
     const [tooltipIndex, setTooltipIndex] = useState(null);
-    const [isDark, setIsDark] = useState(false);
-
-    React.useEffect(() => {
-        const checkTheme = () => {
-            setIsDark(document.documentElement.classList.contains('dark'));
-        };
-        checkTheme();
-        const observer = new MutationObserver(checkTheme);
-        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
-        return () => observer.disconnect();
-    }, []);
 
     let displayItems = items;
     if (platform && href) {
