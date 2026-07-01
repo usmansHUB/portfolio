@@ -1,11 +1,22 @@
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaTwitter, FaInstagram, FaFacebook, FaDiscord } from 'react-icons/fa';
 import Logo from './Logo';
 import { portfolioData } from '../data/portfolioData';
+import { SocialFlipButton } from '@/components/ui/social-flip-button';
 
 const Footer = () => {
   const { socials, email } = portfolioData.profile;
   const year = new Date().getFullYear();
+
+  const contactItems = [
+    { letter: "C", icon: <FaGithub />, label: "GitHub", href: socials.github },
+    { letter: "O", icon: <FaTwitter />, label: "Twitter", href: "https://twitter.com" },
+    { letter: "N", icon: <FaLinkedin />, label: "LinkedIn", href: socials.linkedin },
+    { letter: "T", icon: <FaInstagram />, label: "Instagram", href: "https://instagram.com" },
+    { letter: "A", icon: <FaFacebook />, label: "Facebook", href: "https://facebook.com" },
+    { letter: "C", icon: <FaEnvelope />, label: "Email", href: `mailto:${email}` },
+    { letter: "T", icon: <FaDiscord />, label: "Discord", href: "https://discord.com" },
+  ];
 
   return (
     <footer className="relative border-t border-foreground/10 px-6 py-16 md:px-12 md:py-20">
@@ -23,19 +34,8 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-col items-center space-y-5 md:items-end">
-          <div className="flex flex-wrap justify-center gap-4 text-sm font-bold uppercase tracking-widest md:justify-end">
-            <a href={socials.github} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
-              <FaGithub className="h-4 w-4" />
-              GitHub
-            </a>
-            <a href={socials.linkedin} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
-              <FaLinkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-            <a href={`mailto:${email}`} className="inline-flex items-center gap-2 rounded-full border border-foreground/10 px-3 py-2 transition-colors hover:border-accent/40 hover:text-accent">
-              <FaEnvelope className="h-4 w-4" />
-              Email
-            </a>
+          <div className="flex flex-wrap justify-center gap-4 md:justify-end">
+            <SocialFlipButton items={contactItems} className="p-0 scale-90 md:scale-100 origin-center md:origin-right" />
           </div>
           <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground">
             &copy; {year} Muhammad Usman Safdar
