@@ -3,11 +3,31 @@
 @theme {
   --font-display: "Anton", "Inter", sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
-  --color-background: oklch(0.14 0.005 250);
-  --color-foreground: oklch(0.98 0.005 100);
-  --color-accent: oklch(0.78 0.18 75);
-  --color-muted: oklch(0.22 0.008 250);
-  --color-muted-foreground: oklch(0.62 0.01 250);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+}
+
+:root {
+  --background: oklch(0.98 0.005 100);
+  --foreground: oklch(0.14 0.005 250);
+  --accent: oklch(0.65 0.18 75);
+  --muted: oklch(0.94 0.005 250);
+  --muted-foreground: oklch(0.42 0.01 250);
+  --panel-border: oklch(0 0 0 / 0.08);
+  --panel-bg: oklch(0 0 0 / 0.03);
+}
+
+.dark {
+  --background: oklch(0.14 0.005 250);
+  --foreground: oklch(0.98 0.005 100);
+  --accent: oklch(0.78 0.18 75);
+  --muted: oklch(0.22 0.008 250);
+  --muted-foreground: oklch(0.62 0.01 250);
+  --panel-border: oklch(1 0 0 / 0.08);
+  --panel-bg: oklch(1 0 0 / 0.03);
 }
 
 @layer base {
@@ -32,6 +52,7 @@
 
 .marquee-track {
   animation: marquee 40s linear infinite;
+  will-change: transform;
 }
 
 .text-stroke {
@@ -51,8 +72,8 @@
 }
 
 .panel {
-  border: 1px solid oklch(1 0 0 / 0.08);
+  border: 1px solid var(--panel-border);
   border-radius: 1.5rem;
-  background: oklch(1 0 0 / 0.03);
+  background: var(--panel-bg);
   backdrop-filter: blur(12px);
 }

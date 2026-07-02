@@ -79,7 +79,7 @@ const Contact = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.05fr_1.35fr]">
-            <aside className="panel rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.35)] md:p-8">
+            <aside className="panel rounded-[2rem] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.25)] md:p-8">
               <div className="flex flex-col gap-8">
                 <div>
                   <p className="text-[10px] uppercase tracking-[0.35em] text-accent">Contact Info</p>
@@ -88,12 +88,12 @@ const Contact = () => {
                 </div>
 
                 <div className="space-y-4">
-                  <article className="rounded-2xl border border-white/10 bg-white/4 p-4 transition-colors hover:border-accent/30 hover:bg-white/6">
+                  <article className="rounded-2xl border border-foreground/10 bg-foreground/5 p-4 transition-colors hover:border-accent/30 hover:bg-foreground/8">
                     <p className="text-[10px] uppercase tracking-[0.3em] text-accent">Email</p>
                     <a href={`mailto:${profile.email}`} className="mt-2 block break-all text-base font-semibold tracking-wide text-foreground hover:text-accent">{profile.email}</a>
                   </article>
 
-                  <article className="rounded-2xl border border-white/10 bg-white/4 p-4 transition-colors hover:border-accent/30 hover:bg-white/6">
+                  <article className="rounded-2xl border border-foreground/10 bg-foreground/5 p-4 transition-colors hover:border-accent/30 hover:bg-foreground/8">
                     <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Location</p>
                     <p className="mt-2 text-base font-semibold tracking-wide text-foreground">{profile.location}</p>
                   </article>
@@ -115,7 +115,7 @@ const Contact = () => {
                     href={profile.socials.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/30 hover:bg-accent/10 hover:text-accent"
+                    className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/30 hover:bg-accent/10 hover:text-accent"
                   >
                     <FaGithub className="h-4 w-4" />
                     GitHub
@@ -124,7 +124,7 @@ const Contact = () => {
                     href={profile.socials.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/30 hover:bg-accent/10 hover:text-accent"
+                    className="inline-flex items-center gap-2 rounded-full border border-foreground/10 bg-foreground/5 px-4 py-2 text-[11px] font-bold uppercase tracking-[0.22em] text-foreground transition-all hover:-translate-y-0.5 hover:border-accent/30 hover:bg-accent/10 hover:text-accent"
                   >
                     <FaLinkedin className="h-4 w-4" />
                     LinkedIn
@@ -133,11 +133,11 @@ const Contact = () => {
               </div>
             </aside>
 
-            <section className="panel rounded-[2rem] border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.35)] md:p-8">
+            <section className="panel rounded-[2rem] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.25)] md:p-8">
               <p className="mb-4 text-sm font-semibold uppercase tracking-[0.22em] text-muted-foreground">
                 Fill out the form and I will get back to you within 24 hours.
               </p>
-              <form onSubmit={handleSubmit} className="space-y-6 rounded-3xl border border-white/8 bg-background/60 p-6 md:p-8">
+              <form onSubmit={handleSubmit} className="space-y-6 rounded-3xl border border-foreground/10 bg-background/60 p-6 md:p-8">
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
                   <div className="space-y-2">
                     <label htmlFor="name" className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">

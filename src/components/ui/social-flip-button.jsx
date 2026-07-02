@@ -51,11 +51,11 @@ const SocialFlipNode = ({
                         animate={{ opacity: 1, y: -50, scale: 1, x: "-50%" }}
                         exit={{ opacity: 0, y: 10, scale: 0.8, x: "-50%" }}
                         transition={{ duration: 0.2, ease: "easeOut" }}
-                        className="absolute left-1/2 z-50 whitespace-nowrap rounded-lg bg-zinc-950 border border-white/10 px-3 py-1.5 text-xs font-semibold text-accent shadow-xl">
+                        className="absolute left-1/2 z-50 whitespace-nowrap rounded-lg bg-zinc-900 dark:bg-zinc-950 border border-foreground/10 px-3 py-1.5 text-xs font-semibold text-accent shadow-xl">
                         {item.label}
                         {/* Arrow */}
                         <div
-                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-2 w-2 rotate-45 bg-zinc-950 border-r border-b border-white/10" />
+                            className="absolute -bottom-1 left-1/2 -translate-x-1/2 h-2 w-2 rotate-45 bg-zinc-900 dark:bg-zinc-950 border-r border-b border-foreground/10" />
                     </motion.div>
                 )}
             </AnimatePresence>
@@ -74,7 +74,7 @@ const SocialFlipNode = ({
                 {/* Front - Letter */}
                 <div
                     className={cn(
-                        "absolute inset-0 flex items-center justify-center rounded-lg bg-zinc-900 border border-white/10 text-lg font-display uppercase font-bold text-zinc-300 shadow-sm transition-colors duration-200 group-hover/button:text-white",
+                        "absolute inset-0 flex items-center justify-center rounded-lg bg-background/90 dark:bg-zinc-900 border border-foreground/10 text-lg font-display uppercase font-bold text-foreground shadow-sm transition-colors duration-200 group-hover/button:text-accent",
                         frontClassName
                     )}
                     style={{ backfaceVisibility: "hidden" }}>
@@ -219,7 +219,7 @@ export function SocialFlipButton({
             <div className={cn("flex items-center justify-center w-full", className)}>
                 <div 
                     ref={containerRef}
-                    className="relative h-14 w-[280px] rounded-full bg-zinc-950/60 border border-white/10 flex items-center p-1 shadow-2xl backdrop-blur-md overflow-hidden select-none"
+                    className="relative h-14 w-[280px] rounded-full bg-background/90 dark:bg-zinc-950/60 border border-foreground/10 flex items-center p-1 shadow-2xl backdrop-blur-md overflow-hidden select-none"
                 >
                     {/* Subtle gradient background shimmer */}
                     <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent pointer-events-none" />
@@ -265,7 +265,7 @@ export function SocialFlipButton({
         <div className={cn("flex items-center justify-center gap-4", className)}>
             <div
                 ref={containerRef}
-                className="group relative flex items-center justify-center gap-2 rounded-2xl glass-border bg-black/40 p-3 shadow-2xl backdrop-blur-md"
+                className="group relative flex items-center justify-center gap-2 rounded-2xl panel bg-background/45 p-3 shadow-2xl backdrop-blur-md"
                 onMouseEnter={() => !isTouch && setIsHovered(true)}
                 onMouseLeave={() => {
                     if (!isTouch) {

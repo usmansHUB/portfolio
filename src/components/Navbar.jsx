@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import Logo from './Logo';
 import { portfolioData } from '../data/portfolioData';
 
@@ -17,9 +17,29 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const isActive = (path) => location.pathname === path;
 
+  const [prevPath, setPrevPath] = useState(location.pathname);
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
   useEffect(() => {
+    const root = document.documentElement;
+    if (theme === 'dark') {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
+
+  if (location.pathname !== prevPath) {
+    setPrevPath(location.pathname);
     setIsOpen(false);
-  }, [location]);
+  }
 
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : 'unset';
@@ -27,7 +47,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 md:px-12">
-      <nav className="mx-auto mt-4 flex h-14 max-w-7xl items-center justify-between rounded-full border border-white/10 bg-background/70 px-4 shadow-[0_12px_40px_rgba(0,0,0,0.35)] backdrop-blur-xl md:mt-6 md:h-16 md:px-6">
+      <nav className="mx-auto mt-4 flex h-14 max-w-7xl items-center justify-between rounded-full border border-foreground/10 bg-background/70 px-4 shadow-[0_12px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-6 md:h-16 md:px-6">
         <Link to="/" className="flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.02] hover:opacity-90">
           <Logo className="h-8 w-8 md:h-9 md:w-9" />
           <span className="font-display text-lg uppercase tracking-wide md:text-xl">
@@ -35,30 +55,40 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-2 md:flex">
-          {NAV_LINKS.map((link) => (
-            <Link
-              key={link.path}
-              to={link.path}
-              className={`rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] transition-all duration-300 ${
-                isActive(link.path)
-                  ? 'bg-accent/12 text-accent shadow-[0_0_0_1px_rgba(255,255,255,0.06)]'
-                  : 'text-muted-foreground hover:bg-white/4 hover:text-foreground'
-              }`}
-            >
-              {link.name}
-            </Link>
-          ))}
-        </div>
+        <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-2 md:flex">
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`rounded-full px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.22em] transition-all duration-300 ${
+                  isActive(link.path)
+                    ? 'bg-accent/12 text-accent shadow-[0_0_0_1px_var(--panel-border)]'
+                    : 'text-muted-foreground hover:bg-foreground/5 hover:text-foreground'
+                }`}
+              >
+                {link.name}
+              </Link>
+            ))}
+          </div>
 
-        <button
-          type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/4 text-foreground transition-all hover:border-accent/30 hover:text-accent md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Close menu' : 'Open menu'}
-        >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <button
+            onClick={toggleTheme}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-foreground transition-all hover:scale-105 hover:border-accent/30 hover:text-accent cursor-pointer"
+            aria-label="Toggle Theme"
+          >
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+
+          <button
+            type="button"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-foreground/10 bg-foreground/5 text-foreground transition-all hover:border-accent/30 hover:text-accent md:hidden cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label={isOpen ? 'Close menu' : 'Open menu'}
+          >
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </nav>
 
       <AnimatePresence>
@@ -67,9 +97,9 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.06),_transparent_30%),rgba(8,10,16,0.96)] backdrop-blur-2xl md:hidden"
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-background/96 backdrop-blur-2xl md:hidden"
           >
-            <div className="flex flex-col items-center gap-5 rounded-3xl border border-white/10 bg-white/4 p-8 shadow-[0_18px_60px_rgba(0,0,0,0.45)]">
+            <div className="panel flex flex-col items-center gap-5 p-8 bg-background/50 shadow-2xl">
               {NAV_LINKS.map((link, i) => (
                 <motion.div
                   key={link.path}
@@ -82,7 +112,7 @@ const Navbar = () => {
                     className={`rounded-full px-4 py-2 font-display text-2xl uppercase tracking-[0.18em] transition-all ${
                       isActive(link.path)
                         ? 'bg-accent/12 text-accent'
-                        : 'text-foreground hover:bg-white/6 hover:text-accent'
+                        : 'text-foreground hover:bg-foreground/5 hover:text-accent'
                     }`}
                   >
                     {link.name}

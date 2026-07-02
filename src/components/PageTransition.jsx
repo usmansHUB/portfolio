@@ -13,6 +13,7 @@ const PageTransition = ({ children }) => (
     exit="out"
     variants={pageVariants}
     transition={{ duration: 0.5, ease: 'easeOut' }}
+    style={{ willChange: 'transform, opacity' }}
   >
     {children}
   </motion.div>
