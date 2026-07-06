@@ -47,7 +47,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 md:px-12">
-      <nav className="mx-auto mt-4 flex h-14 max-w-7xl items-center justify-between rounded-full border border-foreground/10 bg-background/70 px-4 shadow-[0_12px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-6 md:h-16 md:px-6">
+      <nav className="relative z-50 mx-auto mt-4 flex h-14 max-w-7xl items-center justify-between rounded-full border border-foreground/10 bg-background/70 px-4 shadow-[0_12px_40px_rgba(0,0,0,0.25)] backdrop-blur-xl md:mt-6 md:h-16 md:px-6">
         <Link to="/" className="flex items-center gap-2.5 transition-all duration-300 hover:scale-[1.02] hover:opacity-90">
           <Logo className="h-8 w-8 md:h-9 md:w-9" />
           <span className="font-display text-lg uppercase tracking-wide md:text-xl">
