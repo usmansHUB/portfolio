@@ -42,7 +42,18 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    document.body.style.overflow = isOpen ? 'hidden' : 'unset';
+    const root = document.documentElement;
+    if (isOpen) {
+      root.classList.add('overflow-hidden', 'h-screen');
+      document.body.classList.add('overflow-hidden', 'h-screen');
+    } else {
+      root.classList.remove('overflow-hidden', 'h-screen');
+      document.body.classList.remove('overflow-hidden', 'h-screen');
+    }
+    return () => {
+      root.classList.remove('overflow-hidden', 'h-screen');
+      document.body.classList.remove('overflow-hidden', 'h-screen');
+    };
   }, [isOpen]);
 
   return (
