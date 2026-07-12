@@ -57,6 +57,10 @@
   will-change: transform;
 }
 
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+
 .text-stroke {
   -webkit-text-stroke: 1.5px var(--color-foreground);
   color: transparent;

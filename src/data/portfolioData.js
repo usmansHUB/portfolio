@@ -10,7 +10,7 @@ export const FRONTEND_SKILLS = [
 
 export const BACKEND_SKILLS = [
   { name: 'Node.js', color: '#339933', letter: 'N', icon: 'SiNodedotjs' },
-  { name: 'Express', color: '#ffffff', letter: 'E', icon: 'SiExpress' },
+  { name: 'Express', color: 'var(--foreground)', letter: 'E', icon: 'SiExpress' },
   { name: 'MongoDB', color: '#47A248', letter: 'M', icon: 'SiMongodb' },
   { name: 'SQL', color: '#3399ff', letter: 'SQL', icon: 'DiMsqlServer' },
   { name: 'REST APIs', color: '#F97316', letter: 'API', icon: 'SiPostman' },
@@ -19,10 +19,11 @@ export const BACKEND_SKILLS = [
 
 export const TOOLING_SKILLS = [
   { name: 'Git', color: '#F05032', letter: 'G', icon: 'SiGit' },
-  { name: 'GitHub', color: '#FFFFFF', letter: 'GH', icon: 'SiGithub' },
+  { name: 'GitHub', color: 'var(--foreground)', letter: 'GH', icon: 'SiGithub' },
   { name: 'Postman', color: '#FF6C37', letter: 'P', icon: 'SiPostman' },
   { name: 'Figma', color: '#F24E1E', letter: 'F', icon: 'SiFigma' },
 ];
+
 
 export const portfolioData = {
   profile: {
