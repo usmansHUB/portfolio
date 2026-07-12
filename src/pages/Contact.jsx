@@ -71,7 +71,6 @@ const Contact = () => {
       <div className="relative overflow-hidden px-4 pb-24 pt-24 md:px-12 md:pt-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-14 max-w-3xl text-center">
-            <p className="text-[11px] uppercase tracking-[0.35em] text-muted-foreground">(04) Reach out</p>
             <h1 className="mt-3 font-display text-4xl uppercase tracking-[0.02em] md:text-6xl">Let&apos;s build something remarkable</h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
               Have a project in mind or just want to say hello? I&apos;d love to hear from you.

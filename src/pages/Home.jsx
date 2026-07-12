@@ -1,11 +1,43 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Globe, Smartphone, Database, Quote } from 'lucide-react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
-import * as SiIcons from 'react-icons/si';
-import * as DiIcons from 'react-icons/di';
+import {
+  SiJavascript,
+  SiReact,
+  SiFlutter,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss,
+  SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostman,
+  SiGit,
+  SiGithub,
+  SiFigma,
+} from 'react-icons/si';
+import { DiMsqlServer } from 'react-icons/di';
 import { portfolioData } from '../data/portfolioData';
 import PageTransition from '../components/PageTransition';
+
+const SKILL_ICONS = {
+  SiJavascript,
+  SiReact,
+  SiFlutter,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss,
+  SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  DiMsqlServer,
+  SiPostman,
+  SiGit,
+  SiGithub,
+  SiFigma,
+};
 
 const ROLE_ICONS = {
   fullstack: <Globe className="h-7 w-7 text-accent" />,
@@ -13,26 +45,7 @@ const ROLE_ICONS = {
   backend: <Database className="h-7 w-7 text-accent" />,
 };
 
-const SocialLink = ({ href, label, icon, download }) => {
-  const isExternal = /^https?:\/\//.test(href);
-  return (
-    <a
-      href={href}
-      aria-label={label}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-      download={download}
-      className="group relative flex h-12 w-12 items-center justify-center rounded-full border border-foreground/15 text-foreground/80 transition-all hover:scale-110 hover:border-accent hover:text-accent"
-    >
-      {icon}
-      <span className="pointer-events-none absolute -bottom-6 text-[9px] uppercase tracking-[0.2em] opacity-0 transition-opacity group-hover:opacity-100">
-        {label}
-      </span>
-    </a>
-  );
-};
-
-const getIconComponent = (iconName) => SiIcons[iconName] || DiIcons[iconName];
+const getIconComponent = (iconName) => SKILL_ICONS[iconName];
 
 const Home = () => {
   const { profile, roles, skillCategories } = portfolioData;
@@ -61,8 +74,8 @@ const Home = () => {
               className="mb-6 inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent/10 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-accent"
             >
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
               </span>
               {profile.availability}
             </motion.div>
@@ -117,22 +130,6 @@ const Home = () => {
             </motion.div>
           </motion.div>
         </section>
-
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.4, delay: 1.8 }}
-          className="relative mt-12 border-t border-foreground/10 px-6 py-10 md:px-12"
-        >
-          <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
-            <div className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">(01) Connect</div>
-            <div className="flex gap-3">
-              <SocialLink href={profile.socials.github} label="GitHub" icon={<FaGithub className="h-5 w-5" />} />
-              <SocialLink href={profile.socials.linkedin} label="LinkedIn" icon={<FaLinkedin className="h-5 w-5" />} />
-              <SocialLink href={`mailto:${profile.email}`} label="Email" icon={<FaEnvelope className="h-5 w-5" />} />
-            </div>
-          </div>
-        </motion.section>
 
         <section className="border-t border-foreground/10 px-6 py-16 md:px-12">
           <div className="mx-auto max-w-5xl">

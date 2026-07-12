@@ -1,13 +1,46 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '../data/portfolioData';
 import PageTransition from '../components/PageTransition';
-import * as SiIcons from 'react-icons/si';
-import * as DiIcons from 'react-icons/di';
+import {
+  SiJavascript,
+  SiReact,
+  SiFlutter,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss,
+  SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  SiPostman,
+  SiGit,
+  SiGithub,
+  SiFigma,
+} from 'react-icons/si';
+import { DiMsqlServer } from 'react-icons/di';
+
+const SKILL_ICONS = {
+  SiJavascript,
+  SiReact,
+  SiFlutter,
+  SiTailwindcss,
+  SiHtml5,
+  SiCss,
+  SiVite,
+  SiNodedotjs,
+  SiExpress,
+  SiMongodb,
+  DiMsqlServer,
+  SiPostman,
+  SiGit,
+  SiGithub,
+  SiFigma,
+};
 
 const Skills = () => {
   const { skillCategories } = portfolioData;
 
-  const getIconComponent = (iconName) => SiIcons[iconName] || DiIcons[iconName];
+  const getIconComponent = (iconName) => SKILL_ICONS[iconName];
 
   const getSkillBadgeText = (skill) => {
     if (skill.letter?.trim()) return skill.letter.trim().toUpperCase();
@@ -25,7 +58,6 @@ const Skills = () => {
       <div className="relative overflow-hidden px-6 pb-24 pt-24 md:px-12 md:pt-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto mb-16 max-w-2xl text-center">
-            <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">(03) Arsenal</p>
             <h1 className="mt-3 font-display text-4xl uppercase tracking-tight md:text-6xl">Skills</h1>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">
               Core technologies and tools I use to build modern websites and applications.
@@ -63,9 +95,8 @@ const Skills = () => {
                         <motion.div
                           whileHover={{ scale: 1.18, rotate: 6 }}
                           transition={{ type: 'spring', stiffness: 260, damping: 16 }}
-                          className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-foreground/10 bg-muted/50 font-display text-center leading-none shadow-sm transition-shadow group-hover:shadow-[0_0_0_4px_rgba(255,215,0,0.08)] md:h-16 md:w-16 ${
-                            IconComponent ? 'text-2xl' : 'px-1 text-[0.62rem] font-semibold tracking-[0.16em] md:text-[0.72rem]'
-                          }`}
+                          className={`flex h-14 w-14 items-center justify-center overflow-hidden rounded-full border border-foreground/10 bg-muted/50 font-display text-center leading-none shadow-sm transition-shadow group-hover:shadow-[0_0_0_4px_rgba(255,215,0,0.08)] md:h-16 md:w-16 ${IconComponent ? 'text-2xl' : 'px-1 text-[0.62rem] font-semibold tracking-[0.16em] md:text-[0.72rem]'
+                            }`}
                           style={{ color: skill.color }}
                         >
                           {IconComponent ? (

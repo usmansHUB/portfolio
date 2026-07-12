@@ -1,7 +1,7 @@
 export const FRONTEND_SKILLS = [
   { name: 'JavaScript', color: '#F7DF1E', letter: 'JS', icon: 'SiJavascript' },
   { name: 'React', color: '#61DAFB', letter: 'R', icon: 'SiReact' },
-  { name: 'Next.js', color: '#ffffff', letter: 'N', icon: 'SiNextdotjs' },
+  { name: 'Flutter', color: '#47C5FB', letter: 'F', icon: 'SiFlutter' },
   { name: 'Tailwind CSS', color: '#38BDF8', letter: 'TW', icon: 'SiTailwindcss' },
   { name: 'HTML5', color: '#E34F26', letter: 'H5', icon: 'SiHtml5' },
   { name: 'CSS3', color: '#1572B6', letter: 'C3', icon: 'SiCss' },
@@ -12,9 +12,8 @@ export const BACKEND_SKILLS = [
   { name: 'Node.js', color: '#339933', letter: 'N', icon: 'SiNodedotjs' },
   { name: 'Express', color: '#ffffff', letter: 'E', icon: 'SiExpress' },
   { name: 'MongoDB', color: '#47A248', letter: 'M', icon: 'SiMongodb' },
-  { name: 'SQL', color: '#00758F', letter: 'SQL', icon: 'DiMsqlServer' },
+  { name: 'SQL', color: '#3399ff', letter: 'SQL', icon: 'DiMsqlServer' },
   { name: 'REST APIs', color: '#F97316', letter: 'API', icon: 'SiPostman' },
-  { name: 'JWT', color: '#E11D48', letter: 'JWT', icon: 'SiJsonwebtokens' },
   { name: 'Mongoose', color: '#880000', letter: 'MG', icon: 'SiMongodb' },
 ];
 
