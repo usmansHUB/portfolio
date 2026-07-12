@@ -5,18 +5,16 @@ import { ImageRevealList } from '@/components/ui/image-reveal-list';
 const Projects = () => {
   const { projects } = portfolioData;
 
-  const projectItems = projects
-    .filter((project) => project.id !== 'mentairo')
-    .map((project, idx) => ({
-      id: project.id,
-      title: project.title,
-      subtitle: project.status
-        ? `${project.modules.join(' • ').toUpperCase()} — ${project.status}`
-        : project.modules.join(' • ').toUpperCase(),
-      image: project.image,
-      number: `0${idx + 1}`.slice(-2),
-      href: project.link || '#',
-    }));
+  const projectItems = projects.map((project, idx) => ({
+    id: project.id,
+    title: project.title,
+    subtitle: project.status
+      ? `${project.modules.join(' • ').toUpperCase()} — ${project.status}`
+      : project.modules.join(' • ').toUpperCase(),
+    image: project.image,
+    number: `0${idx + 1}`.slice(-2),
+    href: project.link || '#',
+  }));
 
   return (
     <PageTransition>

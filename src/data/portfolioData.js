@@ -65,15 +65,6 @@ export const portfolioData = {
       link: 'https://hairsaloon-lovat.vercel.app/',
       featured: true,
     },
-    {
-      id: 'mentairo',
-      title: 'Mentairo',
-      description:
-        'Mental health platform with secure real-time video consultations and patient–therapist matching.',
-      modules: ['mongodb', 'express', 'react', 'nodejs'],
-      image: '/projects/mentairo.png',
-      status: 'Web version coming soon',
-    },
   ],
   roles: [
     {
