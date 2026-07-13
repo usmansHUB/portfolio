@@ -16,6 +16,11 @@ import {
   SiGit,
   SiGithub,
   SiFigma,
+  SiPostgresql,
+  SiFastapi,
+  SiPython,
+  SiFirebase,
+  SiAndroidstudio,
 } from 'react-icons/si';
 import { DiMsqlServer } from 'react-icons/di';
 import { portfolioData } from '../data/portfolioData';
@@ -37,6 +42,11 @@ const SKILL_ICONS = {
   SiGit,
   SiGithub,
   SiFigma,
+  SiPostgresql,
+  SiFastapi,
+  SiPython,
+  SiFirebase,
+  SiAndroidstudio,
 };
 
 const ROLE_ICONS = {

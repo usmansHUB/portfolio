@@ -12,6 +12,10 @@ export const BACKEND_SKILLS = [
   { name: 'Node.js', color: '#339933', letter: 'N', icon: 'SiNodedotjs' },
   { name: 'Express', color: 'var(--foreground)', letter: 'E', icon: 'SiExpress' },
   { name: 'MongoDB', color: '#47A248', letter: 'M', icon: 'SiMongodb' },
+  { name: 'PostgreSQL', color: '#4169E1', letter: 'PS', icon: 'SiPostgresql' },
+  { name: 'FastAPI', color: '#009688', letter: 'FA', icon: 'SiFastapi' },
+  { name: 'Python', color: '#3776AB', letter: 'Py', icon: 'SiPython' },
+  { name: 'Firebase', color: '#FFCA28', letter: 'FB', icon: 'SiFirebase' },
   { name: 'SQL', color: '#3399ff', letter: 'SQL', icon: 'DiMsqlServer' },
   { name: 'REST APIs', color: '#F97316', letter: 'API', icon: 'SiPostman' },
   { name: 'Mongoose', color: '#880000', letter: 'MG', icon: 'SiMongodb' },
@@ -20,6 +24,7 @@ export const BACKEND_SKILLS = [
 export const TOOLING_SKILLS = [
   { name: 'Git', color: '#F05032', letter: 'G', icon: 'SiGit' },
   { name: 'GitHub', color: 'var(--foreground)', letter: 'GH', icon: 'SiGithub' },
+  { name: 'Android Studio', color: '#3DDC84', letter: 'AS', icon: 'SiAndroidstudio' },
   { name: 'Postman', color: '#FF6C37', letter: 'P', icon: 'SiPostman' },
   { name: 'Figma', color: '#F24E1E', letter: 'F', icon: 'SiFigma' },
 ];
@@ -28,11 +33,11 @@ export const TOOLING_SKILLS = [
 export const portfolioData = {
   profile: {
     name: 'Muhammad Usman Safdar',
-    title: 'Full Stack Developer',
-    role: 'Full Stack Developer',
+    title: 'MERN Stack & Mobile App Developer',
+    role: 'MERN Stack & Mobile App Developer',
     availability: 'Open for new opportunities',
     location: 'Remote / Global',
-    email: 'usmansafdar12535@gmail.com',
+    email: 'usmansafdar2025@gmail.com',
     cvUrl: '/Muhammad_Usman_CV.pdf',
     socials: {
       github: 'https://github.com/usmansHUB',
@@ -47,19 +52,19 @@ export const portfolioData = {
   projects: [
     {
       id: 'hrm',
-      title: 'Vercel HR Management App',
+      title: 'HR Management App',
       description:
-        'A comprehensive HR management platform featuring payroll calculations, attendance tracking with clock heatmaps, applicant tracking system, and performance evaluations on a unified dashboard.',
-      modules: ['mongodb', 'express', 'VueJS', 'nodejs'],
+        'A full-stack HR management platform designed to simplify employee management and organizational workflows, featuring interactive dashboards and structured database handling.',
+      modules: ['mongodb', 'express', 'react', 'nodejs'],
       image: '/projects/hrm.png',
       link: 'https://hr-managementapp.vercel.app/',
       featured: true,
     },
     {
       id: 'salon',
-      title: 'Luxe Hair Saloon Web App',
+      title: 'Luxe Grooming',
       description:
-        'A modern web application for a salon, featuring service booking, secure admin dashboard, and a fully responsive design.',
+        'A salon booking and management solution using React JS, Tailwind CSS, Express JS, and MongoDB, featuring appointment booking and a secure admin dashboard.',
       modules: ['mongodb', 'express', 'react', 'nodejs'],
       image: '/projects/salon.png',
       link: 'https://hairsaloon-lovat.vercel.app/',
@@ -75,9 +80,9 @@ export const portfolioData = {
     },
     {
       id: 'frontend',
-      title: 'FRONTEND INTERFACES',
+      title: 'FRONTEND & MOBILE',
       description:
-        'Building fast, accessible React frontends wired to Express APIs and MongoDB-backed data.',
+        'Building responsive React web apps and cross-platform mobile applications with Flutter & Dart.',
     },
     {
       id: 'backend',
