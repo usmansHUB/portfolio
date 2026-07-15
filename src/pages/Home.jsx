@@ -118,7 +118,7 @@ const Home = () => {
             <div className="relative overflow-hidden leading-[0.82]">
               <motion.h1
                 variants={lineReveal}
-                className="text-stroke font-display whitespace-nowrap text-right text-[clamp(2rem,8.6vw,12rem)] uppercase tracking-[-0.03em]"
+                className="text-stroke font-display whitespace-nowrap text-left text-[clamp(2rem,8.6vw,12rem)] uppercase tracking-[-0.03em]"
               >
                 {profile.title.toUpperCase()}
               </motion.h1>

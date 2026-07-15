@@ -33,8 +33,8 @@ export const TOOLING_SKILLS = [
 export const portfolioData = {
   profile: {
     name: 'Muhammad Usman Safdar',
-    title: 'MERN Stack & Mobile App Developer',
-    role: 'MERN Stack & Mobile App Developer',
+    title: 'Full Stack Developer',
+    role: 'Full Stack Developer',
     availability: 'Open for new opportunities',
     location: 'Remote / Global',
     email: 'usmansafdar2025@gmail.com',
